@@ -1,67 +1,86 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <link rel="stylesheet" href="styles.css">
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ProGear Hub</title>
-  <link rel="stylesheet" href="styles.css" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>ProGear Hub</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="icon" href="images/progear-icon.png" />
 </head>
 <body>
+    <header class="page-header">
+        <!-- Logo -->
+        <a href="index.html" class="logo-link">
+            <img class="logo" src="images/progear-logo.png" alt="ProGear Hub Logo" />
+        </a>
 
-  <header class="navbar">
-    <div class="logo">
-      <a href="#">ProGear Hub</a>
-    </div>
+        <!-- Search Bar -->
+        <form class="search-bar" action="#" method="get">
+            <input type="search" name="query" placeholder="Search sports gear..." />
+            <button type="submit">Search</button>
+        </form>
 
-    <div class="search-bar">
-      <input type="text" placeholder="Search products...">
-    </div>
+        <!-- Navigation -->
+        <nav class="navbar">
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="#">Shop</a>
+                    <ul class="dropdown">
+                        <li><a href="#">By Sport</a>
+                            <ul class="dropdown">
+                                <li><a href="#">Football</a></li>
+                                <li><a href="#">Cricket</a></li>
+                                <li><a href="#">Tennis</a></li>
+                                <li><a href="#">Swimming</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#">By Equipment</a>
+                            <ul class="dropdown">
+                                <li><a href="#">Apparel</a></li>
+                                <li><a href="#">Gear</a></li>
+                                <li><a href="#">Accessories</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li><a href="orders.html">Orders</a></li>
+                <li><a href="#">Blog / Resources</a>
+                    <ul class="dropdown">
+                        <li><a href="#">Sports Tips</a></li>
+                        <li><a href="#">Gear Maintenance</a></li>
+                        <li><a href="#">Product Recommendations</a></li>
+                    </ul>
+                </li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+        </nav>
+    </header>
 
-    <div class="quick-links">
-      <a href="#">Login</a>
-      <a href="#">Cart</a>
-    </div>
-  </header>
+    <main class="page-content">
+        <!-- Banner -->
+        <section class="front-banner">
+            <img src="images/banner.jpg" alt="ProGear Banner" class="banner-image">
+        </section>
 
-  <nav class="main-nav">
-    <ul>
-      <li><a href="#">Home</a></li>
-      <li class="dropdown">
-        <a href="#">Shop</a>
-        <ul class="dropdown-content">
-          <li><a href="#">Football</a></li>
-          <li><a href="#">Cricket</a></li>
-          <li><a href="#">Tennis</a></li>
-          <li><a href="#">Swimming</a></li>
-          <li><a href="#">Apparel</a></li>
-          <li><a href="#">Gear</a></li>
-          <li><a href="#">Accessories</a></li>
-        </ul>
-      </li>
-      <li><a href="#">Orders</a></li>
-      <li><a href="#">About Us</a></li>
-      <li><a href="#">Blog/Resources</a></li>
-      <li><a href="#">Contact Us</a></li>
-    </ul>
-  </nav>
+        <!-- Welcome section -->
+        <section class="welcome-section">
+            <h1>Welcome to ProGear Hub</h1>
+            <p>Your one-stop shop for quality sports equipment and expert resources. Whether you're a passionate athlete or a coach buying in bulk, we've got you covered.</p>
+        </section>
+    </main>
 
-  <main class="homepage-content">
-    <section class="hero-banner">
-      <h1>Welcome to ProGear Hub</h1>
-      <p>Discover top-quality sports equipment for all your athletic needs.</p>
-      <a href="#" class="cta-button">Shop Now</a>
-    </section>
-
-    <section class="featured-products">
-      <h2>Featured Products</h2>
-      <!-- Product cards go here -->
-    </section>
-  </main>
-
-  <footer class="site-footer">
-    <p>&copy; 2025 ProGear Hub. All rights reserved.</p>
-  </footer>
-
+    <footer class="page-footer">
+        <nav class="footer-nav">
+            <ul class="footer-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="#">Shop</a></li>
+                <li><a href="#">Blog</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+        </nav>
+        <p>&copy; 2025 ProGear Hub. All rights reserved.</p>
+    </footer>
 </body>
 </html>
