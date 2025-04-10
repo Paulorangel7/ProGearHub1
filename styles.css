@@ -1,0 +1,132 @@
+/* Reset e estrutura base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Open Sans', sans-serif;
+  background-color: #f9f9f9;
+  color: #333;
+  line-height: 1.6;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* NAVBAR */
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #002b5c;
+  padding: 1rem 2rem;
+  flex-wrap: wrap;
+}
+
+.navbar .logo {
+  font-size: 1.8rem;
+  color: white;
+  font-weight: bold;
+  flex: 1;
+}
+
+.navbar .search-bar {
+  flex: 2;
+  text-align: center;
+}
+
+.search-bar input {
+  padding: 0.5rem 1rem;
+  width: 60%;
+  max-width: 400px;
+  border: none;
+  border-radius: 20px;
+  font-size: 1rem;
+}
+
+.navbar .quick-links {
+  flex: 1;
+  text-align: right;
+}
+
+.quick-links a {
+  color: white;
+  margin-left: 1rem;
+  font-weight: 500;
+}
+
+/* HERO */
+.hero {
+  background-image: url('https://source.unsplash.com/1600x600/?sports,equipment');
+  background-size: cover;
+  background-position: center;
+  height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
+}
+
+.hero h1 {
+  font-size: 3rem;
+  text-align: center;
+}
+
+/* SECTIONS */
+.section {
+  padding: 3rem 2rem;
+  text-align: center;
+}
+
+.section h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.section p {
+  font-size: 1rem;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* FOOTER */
+footer {
+  background-color: #002b5c;
+  color: white;
+  padding: 1rem 2rem;
+  text-align: center;
+  margin-top: 3rem;
+}
+
+/* RESPONSIVO */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .navbar .search-bar {
+    width: 100%;
+    margin: 1rem 0;
+    text-align: center;
+  }
+
+  .search-bar input {
+    width: 80%;
+  }
+
+  .navbar .quick-links {
+    text-align: left;
+    width: 100%;
+  }
+
+  .hero h1 {
+    font-size: 2rem;
+    padding: 0 1rem;
+  }
+}
