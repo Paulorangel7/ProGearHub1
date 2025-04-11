@@ -1,5 +1,4 @@
 
-/* Reset básico */
 * {
   margin: 0;
   padding: 0;
@@ -16,7 +15,7 @@ body {
   flex-direction: column;
 }
 
-/* Cabeçalho */
+/* Head */
 header {
   background-color: #003366;
   color: #fff;
@@ -46,24 +45,42 @@ header {
   font-weight: 500;
 }
 
-/* Título da Página */
-.page-title {
+/* Hero Banner */
+.hero {
+  position: relative;
   text-align: center;
-  padding: 3rem 1rem;
-  background: #e6f0ff;
 }
 
-.page-title h1 {
-  font-size: 2.5rem;
-  color: #003366;
+.hero img {
+  width: 100%;
+  max-height: 400px;
+  object-fit: cover;
 }
 
-.page-title p {
-  margin-top: 0.5rem;
-  color: #666;
+.hero-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  text-align: center;
+  padding: 20px;
+  background-color: rgba(0, 0, 0, 0.4);
+  border-radius: 10px;
 }
 
-/* Produtos */
+/* top pick */
+.top-picks {
+  text-align: center;
+  margin: 3rem 1rem;
+}
+
+.top-picks h2 {
+  font-size: 2rem;
+  color: #333;
+}
+
+/* Products */
 .products {
   display: flex;
   flex-wrap: wrap;
@@ -98,7 +115,7 @@ header {
   cursor: pointer;
 }
 
-/* Formulário de Pedido */
+/* Form de Pedido */
 .order-form {
   padding: 2rem;
   max-width: 600px;
@@ -132,7 +149,7 @@ form button {
   cursor: pointer;
 }
 
-/* Rodapé */
+/* Footer */
 footer {
   text-align: center;
   padding: 1rem;
@@ -141,7 +158,7 @@ footer {
   margin-top: auto;
 }
 
-/* Responsividade */
+/* Responsivie */
 @media (max-width: 768px) {
   .nav-menu {
     flex-direction: column;
@@ -181,4 +198,3 @@ footer {
     width: 100%;
   }
 }
-
