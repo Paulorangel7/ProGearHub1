@@ -1,36 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>ProGear Hub - Products</title>
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
   <header>
-    <h1>Our Products</h1>
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="products.html" class="active">Products</a>
-      <a href="order.html">Order</a>
-    </nav>
+    <div class="logo"><a href="index.html">ProGear Hub</a></div>
+    <ul class="nav-menu">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="products.html">Products</a></li>
+      <li><a href="order.html">Order</a></li>
+    </ul>
   </header>
 
-  <section class="product-list">
+  <section class="page-title">
+    <h1>Our Products</h1>
+    <p>Explore top quality gear for your sport</p>
+  </section>
+
+  <section class="products">
     <div class="product-card">
-      <img src="images/cricket.png" alt="Cricket">
-      <h2>Cricket Bat</h2>
-      <p>Professional bat for competitive matches.</p>
+      <img src="images/cricket.png" alt="Cricket Gear">
+      <h3>Cricket Set</h3>
+      <p>Professional-grade equipment for serious players.</p>
+      <button onclick="location.href='order.html'">Order Now</button>
     </div>
     <div class="product-card">
       <img src="images/soccer.png" alt="Soccer Ball">
-      <h2>Soccer Ball</h2>
-      <p>High-durability ball for practice and games.</p>
+      <h3>Soccer Ball</h3>
+      <p>Precision-designed for control, power, and durability.</p>
+      <button onclick="location.href='order.html'">Order Now</button>
     </div>
     <div class="product-card">
-      <img src="images/swimming.png" alt="Swimming Goggles">
-      <h2>Swimming Goggles</h2>
-      <p>Anti-fog lenses and comfortable fit.</p>
+      <img src="images/swimming.png" alt="Swimming Gear">
+      <h3>Swimming Kit</h3>
+      <p>High-performance goggles and gear for the pool.</p>
+      <button onclick="location.href='order.html'">Order Now</button>
     </div>
   </section>
 
