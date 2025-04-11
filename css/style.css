@@ -307,3 +307,12 @@ footer {
   margin-right: 0.5rem;
 }
 
+.buy-btn {
+  background-color: orange;
+  color: white;
+  padding: 0.6rem 1.2rem;
+  border: none;
+  border-radius: 5px;
+  text-decoration: none;
+  display: inline-block;
+}
