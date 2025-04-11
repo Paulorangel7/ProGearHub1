@@ -90,6 +90,7 @@ header {
 /* Products */
 .products {
   display: flex;
+  margin: 40px 0;
   justify-content: center;
   gap: 2rem;
   padding: 2rem;
@@ -211,6 +212,7 @@ footer {
 
 .about-section {
   display: flex;
+  margin: 40px 0;
   flex-direction: column;
   align-items: center;
   justify-content: center;
