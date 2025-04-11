@@ -331,12 +331,12 @@ footer {
   display: inline-block;
   padding: 10px 20px;
   background-color: #ff6600;
-  color: #fff;
+  color: white;
   text-decoration: none;
   border-radius: 5px;
 
 .card-icon {
-  width: 60px;   /* ou maior, tipo 50px */
+  width: 150px;  
   height: auto;
   margin-right: 10px;
   vertical-align: middle;
@@ -346,4 +346,19 @@ footer {
 }
 .buy-btn:hover {
   background-color: #e65c00;
+}
+button.giftcard-btn {
+  background-color: #00c2cb; /* Azul claro / ciano */
+  color: white;
+  padding: 15px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  width: 100%;
+  margin-top: 10px;
+}
+
+button.giftcard-btn:hover {
+  background-color: #00a3ab;
 }
