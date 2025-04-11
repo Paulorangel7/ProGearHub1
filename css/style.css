@@ -292,7 +292,7 @@ footer {
   font-weight: bold;
 }
 .pay-btn, .giftcard-btn {
-  width: 40%;
+  width: 100%;
   margin-top: 1rem;
   padding: 1rem;
   border: none;
@@ -304,7 +304,7 @@ footer {
   color: white;
 }
 .giftcard-btn {
-  background: #f5f5f5;
+  background: #00c2cb;
   color: #333;
 }
 .promo-input {
@@ -360,5 +360,5 @@ button.giftcard-btn {
 }
 
 button.giftcard-btn:hover {
-  background-color: #00a3ab;
+  background-color: #009aa2;
 }
