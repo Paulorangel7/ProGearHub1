@@ -292,7 +292,7 @@ footer {
   font-weight: bold;
 }
 .pay-btn, .giftcard-btn {
-  width: 100%;
+  width: 40%;
   margin-top: 1rem;
   padding: 1rem;
   border: none;
@@ -334,6 +334,14 @@ footer {
   color: #fff;
   text-decoration: none;
   border-radius: 5px;
+
+.card-icon {
+  width: 60px;   /* ou maior, tipo 50px */
+  height: auto;
+  margin-right: 10px;
+  vertical-align: middle;
+}
+
   font-weight: bold;
 }
 .buy-btn:hover {
