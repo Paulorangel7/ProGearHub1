@@ -4,85 +4,82 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Checkout - ProGear Hub</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <header>
-    <div class="logo"><a href="index.html">ProGear Hub</a></div>
-    <ul class="nav-menu">
-      <li><a href="#">Football</a></li>
-      <li><a href="#">Swimming</a></li>
-      <li><a href="#">Cricket</a></li>
-      <li><a href="#" class="login-button">Log in</a></li>
-    </ul>
+  <header class="checkout-header">
+    <div class="logo">ProGear Hub</div>
+    <nav>
+      <a href="#">Football</a>
+      <a href="#">Swimming</a>
+      <a href="#">Cricket</a>
+      <button class="login-btn">Log in</button>
+    </nav>
   </header>
 
   <main class="checkout-container">
-    <section class="cart-items">
+    <section class="cart">
       <h2>Cart</h2>
       <p>Check your cart items before proceeding to payment.</p>
 
-      <div class="item">
-        <img src="images/soccer-ball.png" alt="Soccer Ball">
+      <div class="cart-item">
+        <img src="images/soccer.png" alt="Soccer Ball" />
         <div class="item-details">
-          <h3>Soccer Ball</h3>
+          <strong>Soccer Ball</strong>
           <p>Enhance your game with this premium, durable soccer ball.</p>
         </div>
-        <div class="item-controls">
-          <button>-</button><span>1</span><button>+</button>
-        </div>
-        <div class="item-price">AUD 70.98</div>
-        <a href="#" class="remove">Remove</a>
+        <div class="quantity">Amount: 1</div>
+        <div class="price">AUD 70.98</div>
+        <button class="remove">Remove</button>
       </div>
 
-      <div class="item">
-        <img src="images/goggles.png" alt="Swimming Goggles">
+      <div class="cart-item">
+        <img src="images/swimming.png" alt="Swimming Goggles" />
         <div class="item-details">
-          <h3>Swimming Goggles</h3>
-          <p>Achieve clear vision and a comfortable fit with these goggles.</p>
+          <strong>Swimming Goggles</strong>
+          <p>Achieve clear vision and a comfortable fit with these swimming goggles.</p>
         </div>
-        <div class="item-controls">
-          <button>-</button><span>1</span><button>+</button>
-        </div>
-        <div class="item-price">AUD 50.99</div>
-        <a href="#" class="remove">Remove</a>
+        <div class="quantity">Amount: 1</div>
+        <div class="price">AUD 50.99</div>
+        <button class="remove">Remove</button>
       </div>
 
-      <div class="item">
-        <img src="images/cricket-bat.png" alt="Cricket Bat">
+      <div class="cart-item">
+        <img src="images/cricket.png" alt="Cricket Bat" />
         <div class="item-details">
-          <h3>Cricket Bat</h3>
+          <strong>Cricket Bat</strong>
           <p>Unleash powerful strokes with this high-quality cricket bat.</p>
         </div>
-        <div class="item-controls">
-          <button>-</button><span>1</span><button>+</button>
-        </div>
-        <div class="item-price">AUD 65.99</div>
-        <a href="#" class="remove">Remove</a>
+        <div class="quantity">Amount: 1</div>
+        <div class="price">AUD 65.99</div>
+        <button class="remove">Remove</button>
       </div>
     </section>
 
     <section class="summary">
       <h2>Summary Order</h2>
       <label for="promo">Promocode</label>
-      <div class="promo-row">
-        <input type="text" id="promo" placeholder="Enter code">
-        <button class="apply-btn">Apply</button>
+      <div class="promo-input">
+        <input type="text" id="promo" placeholder="Enter code" />
+        <button class="apply">Apply</button>
       </div>
-      <div class="summary-details">
-        <p>Total: <strong>AUD 187.96</strong></p>
-        <p>Shipping: <strong>AUD 15.00</strong></p>
-        <p class="total-cost">Total cost: <strong>AUD 202.96</strong></p>
-      </div>
+      <div class="summary-line"><span>Total:</span><span>AUD 187.96</span></div>
+      <div class="summary-line"><span>Shipping:</span><span>AUD 15.00</span></div>
+      <div class="summary-line total"><span>Total cost:</span><span>AUD 202.96</span></div>
+
       <button class="pay-btn">Pay</button>
-      <button class="giftcard-btn">🎁 Pay with giftcard</button>
+      <button class="giftcard-btn">Pay with giftcard</button>
+
+      <div class="payment-options">
+        <h3>Payment</h3>
+        <label><input type="radio" name="payment" checked /> <img src="images/cards.png" alt="Visa"> Visa Debit Card</label>
+        <label><input type="radio" name="payment" /> <img src="images/cards.png" alt="Mastercard"> Mastercard</label>
+      </div>
     </section>
   </main>
+</body>
+</html>
 
-  <section class="payment">
-    <h3>Payment</h3>
-    <label><input type="radio" name="card" checked> <img src="images/visa.png" alt="Visa"> Visa Debit Card •••• 5212</label>
-    <label><input type="radio" name="card"> <img src="images/mastercard.png" alt="Mastercard"> Mastercard •••• 8423</label>
     <a href="#" class="add-card">+ Add payment card</a>
   </section>
 </body>
