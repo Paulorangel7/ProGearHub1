@@ -1,4 +1,4 @@
-/* Reset e estrutura base */
+/* Reset básico */
 * {
   margin: 0;
   padding: 0;
@@ -6,127 +6,180 @@
 }
 
 body {
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   background-color: #f9f9f9;
   color: #333;
   line-height: 1.6;
-}
-
-a {
-  text-decoration: none;
-  color: inherit;
-}
-
-/* NAVBAR */
-.navbar {
+  min-height: 100vh;
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background-color: #002b5c;
+  flex-direction: column;
+}
+
+/* Cabeçalho */
+header {
+  background-color: #003366;
+  color: #fff;
   padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   flex-wrap: wrap;
 }
 
-.navbar .logo {
+.logo a {
   font-size: 1.8rem;
-  color: white;
   font-weight: bold;
-  flex: 1;
-}
-
-.navbar .search-bar {
-  flex: 2;
-  text-align: center;
-}
-
-.search-bar input {
-  padding: 0.5rem 1rem;
-  width: 60%;
-  max-width: 400px;
-  border: none;
-  border-radius: 20px;
-  font-size: 1rem;
-}
-
-.navbar .quick-links {
-  flex: 1;
-  text-align: right;
-}
-
-.quick-links a {
+  text-decoration: none;
   color: white;
-  margin-left: 1rem;
+}
+
+.nav-menu {
+  display: flex;
+  list-style: none;
+  gap: 1.5rem;
+}
+
+.nav-menu li a {
+  color: #fff;
+  text-decoration: none;
   font-weight: 500;
 }
 
-/* HERO */
-.hero {
-  background-image: url('https://source.unsplash.com/1600x600/?sports,equipment');
-  background-size: cover;
-  background-position: center;
-  height: 400px;
+/* Título da Página */
+.page-title {
+  text-align: center;
+  padding: 3rem 1rem;
+  background: #e6f0ff;
+}
+
+.page-title h1 {
+  font-size: 2.5rem;
+  color: #003366;
+}
+
+.page-title p {
+  margin-top: 0.5rem;
+  color: #666;
+}
+
+/* Produtos */
+.products {
   display: flex;
-  align-items: center;
+  flex-wrap: wrap;
   justify-content: center;
-  color: white;
-  text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
+  gap: 2rem;
+  padding: 2rem;
 }
 
-.hero h1 {
-  font-size: 3rem;
+.product-card {
+  background: #fff;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  width: 260px;
   text-align: center;
 }
 
-/* SECTIONS */
-.section {
-  padding: 3rem 2rem;
-  text-align: center;
-}
-
-.section h2 {
-  font-size: 2rem;
+.product-card img {
+  max-width: 100%;
+  height: 160px;
+  object-fit: contain;
   margin-bottom: 1rem;
 }
 
-.section p {
-  font-size: 1rem;
+.product-card button {
+  background-color: #ff6600;
+  color: white;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  margin-top: 0.5rem;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* Formulário de Pedido */
+.order-form {
+  padding: 2rem;
   max-width: 600px;
   margin: 0 auto;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
 }
 
-/* FOOTER */
-footer {
-  background-color: #002b5c;
+form label {
+  display: block;
+  margin-top: 1rem;
+  font-weight: bold;
+}
+
+form input, form select, form textarea {
+  width: 100%;
+  padding: 0.8rem;
+  margin-top: 0.4rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+form button {
+  margin-top: 1.5rem;
+  padding: 0.8rem 1.5rem;
+  background-color: #003366;
   color: white;
-  padding: 1rem 2rem;
-  text-align: center;
-  margin-top: 3rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
-/* RESPONSIVO */
+/* Rodapé */
+footer {
+  text-align: center;
+  padding: 1rem;
+  background-color: #003366;
+  color: white;
+  margin-top: auto;
+}
+
+/* Responsividade */
 @media (max-width: 768px) {
-  .navbar {
+  .nav-menu {
+    flex-direction: column;
+    gap: 0.8rem;
+    margin-top: 1rem;
+  }
+
+  .products {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .page-title h1 {
+    font-size: 2rem;
+  }
+
+  .product-card {
+    width: 90%;
+  }
+
+  header {
     flex-direction: column;
     align-items: flex-start;
   }
+}
 
-  .navbar .search-bar {
+@media (max-width: 480px) {
+  .page-title h1 {
+    font-size: 1.5rem;
+  }
+
+  form input, form select, form textarea {
+    padding: 0.6rem;
+  }
+
+  form button {
     width: 100%;
-    margin: 1rem 0;
-    text-align: center;
-  }
-
-  .search-bar input {
-    width: 80%;
-  }
-
-  .navbar .quick-links {
-    text-align: left;
-    width: 100%;
-  }
-
-  .hero h1 {
-    font-size: 2rem;
-    padding: 0 1rem;
   }
 }
+
+
+
