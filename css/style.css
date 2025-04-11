@@ -208,106 +208,102 @@ footer {
     width: 100%;
   }
 }
+.checkout-header {
+  background-color: #0b2a5c;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+  align-items: center;
+}
+.checkout-header nav a {
+  color: white;
+  margin: 0 1rem;
+  text-decoration: none;
+}
+.login-btn {
+  background-color: orange;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  margin-left: 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+}
 .checkout-container {
   display: flex;
-  gap: 2rem;
   padding: 2rem;
-  flex-wrap: wrap;
+  gap: 2rem;
 }
-
-.cart-items, .summary {
-  background-color: #fff;
+.cart, .summary {
+  background: #fff;
   padding: 1.5rem;
   border-radius: 10px;
   flex: 1;
-  min-width: 300px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
 }
-
-.item {
+.cart-item {
   display: flex;
-  align-items: center;
-  margin-bottom: 1rem;
+  align-items: flex-start;
   gap: 1rem;
-  border-bottom: 1px solid #ddd;
-  padding-bottom: 1rem;
+  margin-bottom: 1rem;
 }
-
-.item img {
+.cart-item img {
   width: 60px;
   height: 60px;
   object-fit: contain;
 }
-
-.item-details {
-  flex: 1;
+.item-details p {
+  margin: 0.3rem 0;
+  font-size: 0.9rem;
 }
-
-.item-controls {
+.remove {
+  background: none;
+  border: none;
+  color: red;
+  cursor: pointer;
+}
+.summary-line {
   display: flex;
-  align-items: center;
-  gap: 5px;
+  justify-content: space-between;
+  margin: 0.5rem 0;
 }
-
-.item-price {
+.summary-line.total {
   font-weight: bold;
 }
-
-.remove {
-  color: red;
-  font-size: 0.9rem;
-  text-decoration: none;
-  margin-left: auto;
+.pay-btn, .giftcard-btn {
+  width: 100%;
+  margin-top: 1rem;
+  padding: 1rem;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
 }
-
-.promo-row {
+.pay-btn {
+  background-color: #1d1d2e;
+  color: white;
+}
+.giftcard-btn {
+  background: #f5f5f5;
+  color: #333;
+}
+.promo-input {
   display: flex;
   gap: 0.5rem;
-  margin: 1rem 0;
+  margin-bottom: 1rem;
 }
-
-.promo-row input {
+.promo-input input {
   flex: 1;
   padding: 0.5rem;
 }
-
-.apply-btn, .pay-btn, .giftcard-btn {
-  background-color: #003366;
+.apply {
+  background-color: #003c9e;
   color: white;
-  padding: 0.75rem 1.2rem;
   border: none;
-  border-radius: 8px;
-  margin-top: 1rem;
-  cursor: pointer;
-  width: 100%;
+  padding: 0.5rem 1rem;
 }
-
-.giftcard-btn {
-  background-color: white;
-  border: 2px solid #003366;
-  color: #003366;
-  margin-top: 0.5rem;
-}
-
-.payment {
-  padding: 2rem;
-  border-top: 1px solid #ddd;
-}
-
-.payment label {
-  display: flex;
-  align-items: center;
-  margin-bottom: 1rem;
-  gap: 0.5rem;
-}
-
-.payment img {
+.payment-options img {
   width: 40px;
-  height: auto;
+  margin-right: 0.5rem;
 }
 
-.add-card {
-  display: inline-block;
-  margin-top: 0.5rem;
-  color: #007BFF;
-  text-decoration: none;
-}
