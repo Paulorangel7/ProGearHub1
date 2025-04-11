@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ProGear Hub - Order</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header>
+    <div class="logo"><a href="index.html">ProGear Hub</a></div>
+    <ul class="nav-menu">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="products.html">Products</a></li>
+      <li><a href="order.html">Order</a></li>
+    </ul>
+  </header>
+
+  <section class="page-title">
+    <h1>Order Form</h1>
+    <p>Fill out the form below to place your order</p>
+  </section>
+
+  <section class="order-form">
+    <form action="#" method="post">
+      <label for="name">Full Name:</label>
+      <input type="text" id="name" name="name" required />
+
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" required />
+
+      <label for="product">Product:</label>
+      <select id="product" name="product" required>
+        <option value="">Select a product</option>
+        <option value="soccer-ball">Soccer Ball</option>
+        <option value="tennis-racket">Tennis Racket</option>
+        <option value="swimming-goggles">Swimming Goggles</option>
+      </select>
+
+      <label for="quantity">Quantity:</label>
+      <input type="number" id="quantity" name="quantity" min="1" required />
+
+      <label for="message">Message (optional):</label>
+      <textarea id="message" name="message" rows="4"></textarea>
+
+      <button type="submit">Submit Order</button>
+    </form>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 ProGear Hub. All rights reserved.</p>
+  </footer>
+</body>
+</html>
