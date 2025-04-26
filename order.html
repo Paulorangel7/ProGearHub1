@@ -8,13 +8,13 @@
 </head>
 <body>
   <header>
-   <ul class="nav-menu">
-     <li><a href="index.html">Home</a></li>
-     <li><a href="products.html">Products</a></li>
-     <li><a href="order.html">Order</a></li>
-     <li><a href="about.html">About Us</a></li>
-     <li><a href="blog.html">Blog</a></li>
-   </ul>
+    <ul class="nav-menu">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="products.html">Products</a></li>
+      <li><a href="order.html">Order</a></li>
+      <li><a href="about.html">About Us</a></li>
+      <li><a href="blog.html">Blog</a></li>
+    </ul>
   </header>
 
   <section class="page-title">
@@ -25,19 +25,22 @@
   <section class="order-form">
     <form action="order_process.php" method="POST">
 
-      <label for="name">Full Name:</label>
+      <label for="customer_name">Full Name:</label>
       <input type="text" id="customer_name" name="customer_name" required />
 
       <label for="email">Email:</label>
       <input type="email" id="email" name="email" required />
 
-      <label for="product">Product:</label>
+      <label for="product_name">Product:</label>
       <select id="product_name" name="product_name" required>
         <option value="">Select a product</option>
-        <option value="soccer-ball">Soccer</option>
-        <option value="tennis-racket">Cricket</option>
-        <option value="swimming-goggles">Swimming</option>
+        <option value="Soccer Ball">Soccer</option>
+        <option value="Tennis Racket">Cricket</option>
+        <option value="Swimming Goggles">Swimming</option>
       </select>
+
+      <!-- Hidden field for the price -->
+      <input type="hidden" id="price" name="price" value="">
 
       <label for="quantity">Quantity:</label>
       <input type="number" id="quantity" name="quantity" min="1" required />
@@ -52,5 +55,8 @@
   <footer>
     <p>&copy; 2025 ProGear Hub. All rights reserved.</p>
   </footer>
-</body>
-</html>
+
+  <!-- SCRIPT to set price based on product -->
+  <script>
+    document.getElementById('product_name').addEventListener('change', function() {
+      var priceField = document.getElementById('
