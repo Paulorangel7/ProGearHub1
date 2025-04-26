@@ -1,35 +1,31 @@
 <?php
-// Verifica se o formulário foi enviado
+// Checks if the form has been sent
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Pega os dados do formulário
-    $name = $_POST['customer_name'];
+    $name = $_POST['name'];
     $email = $_POST['email'];
-    $product = $_POST['product_name'];
-    $quantity = (int)$_POST['quantity'];
-    $price = (float)$_POST['price'];
+    $subject = $_POST['subject'];
+    $message = $_POST['message'];
 
-    // Calcula o preço total
-    $total_price = $quantity * $price;
-
-    // Conecta ao banco de dados
+// Connect to the database
     $conn = new mysqli('localhost', 'root', '', 'ProGearHub');
 
-    // Verifica a conexão
+  // Check the connection
     if ($conn->connect_error) {
         die("Erro de conexão: " . $conn->connect_error);
     }
 
-    // Prepara o SQL para inserir o pedido
-    $sql = "INSERT INTO orders (customer_name, email, product_name, quantity, price)
-            VALUES ('$name', '$email', '$product', '$quantity', '$price')";
+    // Prepare SQL to insert the message
+    $sql = "INSERT INTO contact_us (name, email, subject, message)
+            VALUES ('$name', '$email', '$subject', '$message')";
 
     if ($conn->query($sql) === TRUE) {
-        echo "Pedido enviado com sucesso!";
+        echo "Mensagem enviada com sucesso!";
     } else {
         echo "Erro: " . $sql . "<br>" . $conn->error;
     }
 
-    // Fecha a conexão
+   // Close the connection
     $conn->close();
 }
 ?>
