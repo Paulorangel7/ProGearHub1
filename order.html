@@ -51,7 +51,24 @@
       <button type="submit">Submit Order</button>
     </form>
   </section>
+ <?php
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        require_once 'config.php';
 
+        $product_id = $_POST['product_id'] ?? '';
+        $quantity = $_POST['quantity'] ?? '';
+        $customer_name = $_POST['customer_name'] ?? '';
+        $address = $_POST['address'] ?? '';
+
+        if ($product_id && $quantity && $customer_name && $address) {
+            $stmt = $pdo->prepare("INSERT INTO orders (product_id, quantity, customer_name, address) VALUES (?, ?, ?, ?)");
+            $stmt->execute([$product_id, $quantity, $customer_name, $address]);
+            echo "<p style='color:green;'>Order placed successfully!</p>";
+        } else {
+            echo "<p style='color:red;'>Please fill in all fields.</p>";
+        }
+    }
+    ?>
   <footer>
     <p>&copy; 2025 ProGear Hub. All rights reserved.</p>
   </footer>
