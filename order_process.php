@@ -1,31 +1,65 @@
 <?php
+// Include the database configuration file that already uses PDO
+require_once ‘config.php’; // 
 // Checks if the form has been sent
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Pega os dados do formulário
-    $name = $_POST['name'];
-    $email = $_POST['email'];
-    $subject = $_POST['subject'];
-    $message = $_POST['message'];
+    // Get the data from the form
+    $name = filter_input(INPUT_POST, 'name', FILTER_SANITIZE_STRING);
+    $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
+    $subject = filter_input(INPUT_POST, 'subject', FILTER_SANITIZE_STRING);
+    $message = filter_input(INPUT_POST, 'message', FILTER_SANITIZE_STRING);
 
 // Connect to the database
     $conn = new mysqli('localhost', 'root', '', 'ProGearHub');
 
   // Check the connection
-    if ($conn->connect_error) {
-        die("Erro de conexão: " . $conn->connect_error);
+    if (empty($name) || empty($email) || empty($subject) || empty($message)) {
+        echo ‘Error: All fields are required.’;
+        exit;
     }
 
-    // Prepare SQL to insert the message
-    $sql = "INSERT INTO contact_us (name, email, subject, message)
-            VALUES ('$name', '$email', '$subject', '$message')";
-
-    if ($conn->query($sql) === TRUE) {
-        echo "Mensagem enviada com sucesso!";
-    } else {
-        echo "Erro: " . $sql . "<br>" . $conn->error;
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        echo ‘Error: Invalid e-mail format.’;
+        exit;
     }
 
-   // Close the connection
-    $conn->close();
+    try {
+        // Prepare the SQL statement to insert the message
+        // ATTENTION: The original script inserts into the ‘contact_us’ table.
+        // The XAMPP image shows an ‘evaluations’ table.
+       
+        // This example continues to use ‘contact_us’ as per the original script.
+        $sql = ‘INSERT INTO contact_us (name, email, subject, message) VALUES (:name, :email, :subject, :message)’;
+        $stmt = $pdo->prepare($sql);
+
+        // Associates the query parameters with the variables
+        $stmt->bindParam(‘:name’, $name, PDO::PARAM_STR);
+        $stmt->bindParam(‘:email’, $email, PDO::PARAM_STR);
+        $stmt->bindParam(‘:subject’, $subject, PDO::PARAM_STR);
+        $stmt->bindParam(‘:message’, $message, PDO::PARAM_STR);
+
+ // Execute the query
+        if ($stmt->execute()) {
+            echo ‘Message sent successfully!’;
+            // You can redirect the user to a thank you page here
+            // header(‘Location: thanks.html’);
+            // exit;
+        } else {
+            echo ‘Error sending message. Try again.’;
+        }
+    } catch (PDOException $e) {
+        // In a production environment, don't display detailed error messages to the user
+        // Log the error to a file or monitoring system
+        error_log("Database error: ’ . $e->getMessage());
+        echo ‘There was an error processing your request. Please try again later.’;
+        // exit;
+    }
+    // The PDO connection is usually closed automatically when the script ends
+    // or when the $pdo object is destroyed.
+} else {
+    // If the method is not a POST, redirect or display an error message
+    echo ‘Invalid request method.’;
+    // header(‘Location: contact.html’);
+    // exit;
 }
 ?>
