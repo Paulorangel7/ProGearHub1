@@ -8,6 +8,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
     $subject = filter_input(INPUT_POST, 'subject', FILTER_SANITIZE_STRING);
     $message = filter_input(INPUT_POST, 'message', FILTER_SANITIZE_STRING);
+    $address = filter_input(INPUT_POST, ‘address’, FILTER_SANITIZE_STRING); // Assuming that ‘address’ comes from the order.html form
+    $product = filter_input(INPUT_POST, ‘product’, FILTER_SANITIZE_STRING); // Assuming that ‘product’ comes from the order.html form
+    $quantity = filter_input(INPUT_POST, ‘quantity’, FILTER_SANITIZE_NUMBER_INT); // Assuming that ‘quantity’ comes from the order.html form
 
 // Connect to the database
     $conn = new mysqli('localhost', 'root', '', 'ProGearHub');
@@ -33,11 +36,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt = $pdo->prepare($sql);
 
         // Associates the query parameters with the variables
-        $stmt->bindParam(‘:name’, $name, PDO::PARAM_STR);
-        $stmt->bindParam(‘:email’, $email, PDO::PARAM_STR);
-        $stmt->bindParam(‘:subject’, $subject, PDO::PARAM_STR);
-        $stmt->bindParam(‘:message’, $message, PDO::PARAM_STR);
+ $stmt = $pdo->prepare($sql);
+        $comment_from_form = "Pedido de: " . $name . "\n";
+        $comment_from_form .= "Email: " . $email . "\n";
+        $comment_from_form .= "Endereço: " . $address . "\n";
+        $comment_from_form .= "Produto: " . $product . "\n";
+        $comment_from_form .= "Quantidade: " . $quantity;
 
+ $stmt->bindParam(':comment', $comment_from_form, PDO::PARAM_STR);
+        
  // Execute the query
         if ($stmt->execute()) {
             echo ‘Message sent successfully!’;
@@ -61,5 +68,4 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     echo ‘Invalid request method.’;
     // header(‘Location: contact.html’);
     // exit;
-}
 ?>
