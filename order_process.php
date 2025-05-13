@@ -1,71 +1,62 @@
 <?php
-// Include the database configuration file that already uses PDO
-require_once ‘config.php’; // 
-// Checks if the form has been sent
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Get the data from the form
-    $name = filter_input(INPUT_POST, 'name', FILTER_SANITIZE_STRING);
+
+
+require_once 'config.php';
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+    // Field names according to the order.html form 
+    $customer_name = filter_input(INPUT_POST, 'customer_name', FILTER_SANITIZE_STRING);
     $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
-    $subject = filter_input(INPUT_POST, 'subject', FILTER_SANITIZE_STRING);
-    $message = filter_input(INPUT_POST, 'message', FILTER_SANITIZE_STRING);
-    $address = filter_input(INPUT_POST, ‘address’, FILTER_SANITIZE_STRING); // Assuming that ‘address’ comes from the order.html form
-    $product = filter_input(INPUT_POST, ‘product’, FILTER_SANITIZE_STRING); // Assuming that ‘product’ comes from the order.html form
-    $quantity = filter_input(INPUT_POST, ‘quantity’, FILTER_SANITIZE_NUMBER_INT); // Assuming that ‘quantity’ comes from the order.html form
+    $product_name = filter_input(INPUT_POST, 'product_name', FILTER_SANITIZE_STRING);
+    $quantity = filter_input(INPUT_POST, 'quantity', FILTER_SANITIZE_NUMBER_INT);
+    $price = filter_input(INPUT_POST, 'price', FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION);
 
-// Connect to the database
-    $conn = new mysqli('localhost', 'root', '', 'ProGearHub');
-
-  // Check the connection
-    if (empty($name) || empty($email) || empty($subject) || empty($message)) {
-        echo ‘Error: All fields are required.’;
-        exit;
+    // Basic validation of mandatory fields
+    if (empty($customer_name) || empty($email) || empty($product_name) || !isset($quantity) || !isset($price)) {
+        die('Error: Customer name, email, product name, quantity and price are mandatory.');
     }
 
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        echo ‘Error: Invalid e-mail format.’;
-        exit;
+        die('Error: Invalid e-mail format.');
+    }
+
+    if (!filter_var($quantity, FILTER_VALIDATE_INT) || $quantity <= 0) {
+        die('Error: The quantity must be a positive integer.');
+    }
+
+    if (!filter_var($price, FILTER_VALIDATE_FLOAT) || $price <= 0) {
+        die('Error: The price must be a positive number.');
     }
 
     try {
-        // Prepare the SQL statement to insert the message
-        // ATTENTION: The original script inserts into the ‘contact_us’ table.
-        // The XAMPP image shows an ‘evaluations’ table.
-       
-        // This example continues to use ‘contact_us’ as per the original script.
-        $sql = ‘INSERT INTO contact_us (name, email, subject, message) VALUES (:name, :email, :subject, :message)’;
+        // SQL query to insert the data into the ‘orders’ table 
+        // total_price is generated automatically by the bank
+        $sql = "INSERT INTO orders (customer_name, email, product_name, quantity, price) 
+                VALUES (:customer_name, :email, :product_name, :quantity, :price)";
+        
         $stmt = $pdo->prepare($sql);
 
-        // Associates the query parameters with the variables
- $stmt = $pdo->prepare($sql);
-        $comment_from_form = "Pedido de: " . $name . "\n";
-        $comment_from_form .= "Email: " . $email . "\n";
-        $comment_from_form .= "Endereço: " . $address . "\n";
-        $comment_from_form .= "Produto: " . $product . "\n";
-        $comment_from_form .= "Quantidade: " . $quantity;
-
- $stmt->bindParam(':comment', $comment_from_form, PDO::PARAM_STR);
+        $stmt->bindParam(':customer_name', $customer_name, PDO::PARAM_STR);
+        $stmt->bindParam(':email', $email, PDO::PARAM_STR);
+        $stmt->bindParam(':product_name', $product_name, PDO::PARAM_STR);
+        $stmt->bindParam(':quantity', $quantity, PDO::PARAM_INT);
+        $stmt->bindParam(':price', $price, PDO::PARAM_STR); // PDO::PARAM_STR is safer for decimals, PDO handles the conversion.
         
- // Execute the query
         if ($stmt->execute()) {
-            echo ‘Message sent successfully!’;
-            // You can redirect the user to a thank you page here
-            // header(‘Location: thanks.html’);
-            // exit;
+            echo "Order successful! Thank you, " . htmlspecialchars($customer_name) . ".";
         } else {
-            echo ‘Error sending message. Try again.’;
+            echo "Sorry, there was an error processing your order. Please try again.";
+            error_log("Error performing insertion in orders table .");
         }
+
     } catch (PDOException $e) {
-        // In a production environment, don't display detailed error messages to the user
-        // Log the error to a file or monitoring system
-        error_log("Database error: ’ . $e->getMessage());
-        echo ‘There was an error processing your request. Please try again later.’;
-        // exit;
+        error_log("Database error when processing order : " . $e->getMessage());
+        echo "A critical error occurred while processing your order. Please contact support.";
     }
-    // The PDO connection is usually closed automatically when the script ends
-    // or when the $pdo object is destroyed.
+
 } else {
-    // If the method is not a POST, redirect or display an error message
-    echo ‘Invalid request method.’;
-    // header(‘Location: contact.html’);
-    // exit;
+    echo "Invalid request method. This script must be accessed via POST.";
+    exit;
+}
 ?>
