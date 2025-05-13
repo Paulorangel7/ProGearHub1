@@ -12,22 +12,30 @@
             <a href="index.html">Home</a> |
             <a href="about.html">About</a> |
             <a href="products.html">Products</a> |
-            <a href="order.php">Order</a> |
-            <a href="contact.php">Contact</a>
+            <a href="order.html">Order</a> |
+            <a href="contact.html">Contact</a>
         </nav>
     </header>
 
     <main>
         <h2>Get in Touch</h2>
         <p>Have questions? Reach out to us anytime!</p>
-        <form action="contact.php" method="POST">
+        
+        <!-- Form action points to the correct final PHP script -->
+        <form action="process_enquiry_final.php" method="POST">
             <label for="name">Name:</label><br>
+            <!-- The name of the name field was already correct in the original HTML for this script -->
             <input type="text" id="name" name="name" required><br><br>
 
             <label for="email">Email:</label><br>
             <input type="email" id="email" name="email" required><br><br>
 
+            <label for="subject">Subject:</label><br>
+
+            <input type="text" id="subject" name="subject" required><br><br> <!-- Tornando obrigatório conforme tabela contact_us -->
+
             <label for="message">Message:</label><br>
+          
             <textarea id="message" name="message" required></textarea><br><br>
 
             <button type="submit">Send Message</button>
@@ -38,24 +46,9 @@
         <p>&copy; 2025 ProGear Hub</p>
     </footer>
 
-    <?php
-    // Lógica PHP para gravar no banco
-    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-        require_once 'config.php';
+</body>
+</html>
 
-        $name = $_POST['name'] ?? '';
-        $email = $_POST['email'] ?? '';
-        $message = $_POST['message'] ?? '';
-
-        if ($name && $email && $message) {
-            $stmt = $pdo->prepare("INSERT INTO contact_form (name, email, message) VALUES (?, ?, ?)");
-            $stmt->execute([$name, $email, $message]);
-            echo "<p style='color:green;'>Message sent successfully!</p>";
-        } else {
-            echo "<p style='color:red;'>Please fill out all fields.</p>";
-        }
-    }
-    ?>
 </body>
 </html>
 
