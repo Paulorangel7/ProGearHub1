@@ -39,8 +39,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         }
 
     } catch (PDOException $e) {
-        error_log("Database error when processing contact message: " . $e->getMessage());
-        echo "A critical error occurred while processing your message. Please contact support.";
+        error_log(" Database error processing contact message: " . $e->getMessage());
+        echo "A critical error occurred processing your message. Please contact support.";
     }
 
 } else {
