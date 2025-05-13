@@ -1,79 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>ProGear Hub - Order</title>
-  <link rel="stylesheet" href="css/style.css" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ProGear Hub - Order</title>
+    <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
-  <header>
-    <ul class="nav-menu">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="products.html">Products</a></li>
-      <li><a href="order.html">Order</a></li>
-      <li><a href="about.html">About Us</a></li>
-      <li><a href="blog.html">Blog</a></li>
-    </ul>
-  </header>
+    <header>
+        <ul class="nav-menu">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="products.html">Products</a></li>
+            <li><a href="order.html">Order</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </header>
 
-  <section class="page-title">
-    <h1>Order Form</h1>
-    <p>Fill out the form below to place your order</p>
-  </section>
+    <section class="page-title">
+        <h1>Order Form</h1>
+        <p>Fill out the form below to place your order</p>
+    </section>
 
-  <section class="order-form">
-    <form action="order_process.php" method="POST">
+    <section class="order-form">
+        <!-- Form action points to the correct final PHP script  -->
+        <form action="process_order.php" method="POST">
+            <label for="customer_name">Full Name:</label>
+            <input type="text" id="customer_name" name="customer_name" required />
 
-      <label for="customer_name">Full Name:</label>
-      <input type="text" id="customer_name" name="customer_name" required />
+            <label for="email">Email:</label>
+            <!-- The name of the email field was already correct in the original HTML for this script -->
+            <input type="email" id="email" name="email" required />
 
-      <label for="email">Email:</label>
-      <input type="email" id="email" name="email" required />
 
-      <label for="product_name">Product:</label>
-      <select id="product_name" name="product_name" required>
-        <option value="">Select a product</option>
-        <option value="Soccer Ball">Soccer</option>
-        <option value="Tennis Racket">Cricket</option>
-        <option value="Swimming Goggles">Swimming</option>
-      </select>
+            <label for="product_name">Product:</label>
+            <select id="product_name" name="product_name" required>
+                <option value="">Select a product</option>
+                <option value="Soccer Ball">Soccer Ball</option>
+                <option value="Tennis Racket">Tennis Racket</option> <!-- Corrected from Cricket to Tennis Racket to match the value -->
+                <option value="Swimming Goggles">Swimming Goggles</option>
+                <!-- Adding the product ‘Running Shoes’ from the teacher's SQL example -->
+                <option value="Running Shoes">Running Shoes</option>
+            </select>
 
-      <!-- Hidden field for the price -->
-      <input type="hidden" id="price" name="price" value="">
+            <label for="quantity">Quantity:</label>
+            <input type="number" id="quantity" name="quantity" min="1" value="1" required />
 
-      <label for="quantity">Quantity:</label>
-      <input type="number" id="quantity" name="quantity" min="1" required />
+            <label for="price">Price (per item):</label>
+            <!-- 
+            <input type="number" id="price" name="price" step="0.01" min="0.01" value="10.00" required />
+            <small>Note: In a real application, product prices would typically be fetched from the database, not entered manually.</small><br><br>
+            <button type="submit">Submit Order</button>
+        </form>
+    </section>
 
-      <label for="message">Message (optional):</label>
-      <textarea id="message" name="message" rows="4"></textarea>
+    <footer>
+        <p>&copy; 2025 ProGear Hub. All rights reserved.</p>
+    </footer>
 
-      <button type="submit">Submit Order</button>
-    </form>
-  </section>
- <?php
-    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-        require_once 'config.php';
-
-        $product_id = $_POST['product_id'] ?? '';
-        $quantity = $_POST['quantity'] ?? '';
-        $customer_name = $_POST['customer_name'] ?? '';
-        $address = $_POST['address'] ?? '';
-
-        if ($product_id && $quantity && $customer_name && $address) {
-            $stmt = $pdo->prepare("INSERT INTO orders (product_id, quantity, customer_name, address) VALUES (?, ?, ?, ?)");
-            $stmt->execute([$product_id, $quantity, $customer_name, $address]);
-            echo "<p style='color:green;'>Order placed successfully!</p>";
-        } else {
-            echo "<p style='color:red;'>Please fill in all fields.</p>";
-        }
-    }
-    ?>
-  <footer>
-    <p>&copy; 2025 ProGear Hub. All rights reserved.</p>
-  </footer>
-
-  <!-- SCRIPT to set price based on product -->
-  <script>
-    document.getElementById('product_name').addEventListener('change', function() {
-      var priceField = document.getElementById('
+</body>
+</html>
