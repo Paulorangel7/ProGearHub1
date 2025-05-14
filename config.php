@@ -1,40 +1,27 @@
 <?php
-// Database Configuration File - config.php
+// config.php - Database Configuration File
 
-// Database connection settings
-// Change as needed for XAMPP
-// (usually ‘root’ as user and blank password are the XAMPP defaults)
-define("DB_HOST", "localhost");
-define("DB_NAME", "ProGearHub"); 
-define("DB_USER", "root");
-define("DB_PASS", ""); // Blank password by default in XAMPP
-define("DB_CHARSET", "utf8mb4");
+$db_host = 'localhost';
+$db_name = 'ProGearHub'; // Database name
+$db_user = 'root';       // Default XAMPP username
+$db_pass = '';           // Default XAMPP password (empty)
+$db_charset = 'utf8mb4';
 
-// Data Source Name (DSN) for the connection PDO
-$dsn = "mysql:host=" . DB_HOST . ";dbname=" . DB_NAME . ";charset=" . DB_CHARSET;
+$dsn = "mysql:host=$db_host;dbname=$db_name;charset=$db_charset";
 
-// Options for the PDO connection
 $options = [
-    PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION, // Throws exceptions in case of error
-    PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,       // Returns the results as associative arrays
-    PDO::ATTR_EMULATE_PREPARES   => false,                  // Disables emulation of prepared statements for security purposes
+    PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
+    PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+    PDO::ATTR_EMULATE_PREPARES   => false,
 ];
 
-// Global variable for the PDO connection
-$pdo = null;
-
+// Global $pdo variable for database connection
+// This will be used by process_order.php and process_enquiry.php
 try {
-    // Try establishing the PDO connection
-    $pdo = new PDO($dsn, DB_USER, DB_PASS, $options);
-} catch (\PDOException $e) {
-    // If the connection fails, it displays a generic error message and logs the actual error.
-  
+    $pdo = new PDO($dsn, $db_user, $db_pass, $options);
+} catch (PDOException $e) {
     error_log("Database Connection Error: " . $e->getMessage());
+    // For the user, show a generic error. The actual error is logged.
     die("Sorry, there was a problem connecting to the database. Please try again later or contact support.");
 }
-
-
-// require_once 'config.php';
-// $stmt = $pdo->prepare("SELECT * FROM sua_tabela");
-// ...
 ?>
